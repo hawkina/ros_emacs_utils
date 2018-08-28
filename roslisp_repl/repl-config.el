@@ -1,5 +1,4 @@
 
-
 (defun my-lisp-mode-hook ()
   (font-lock-add-keywords nil
     '(("\\_<\\(\\?[A-Z0-9][a-zA-Z0-9_]*\\)\\_>" (0 font-lock-warning-face))
