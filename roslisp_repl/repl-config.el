@@ -1,11 +1,26 @@
 
+
+(custom-set-faces
+  '(font-lock-type-face ((t (:bold nil :foreground "pink")))) ;;(rosy brown)
+  '(font-lock-negation-char-face ((t (:bold nil :foreground "pale violet red")))))
+
+
 (defun my-lisp-mode-hook ()
   (font-lock-add-keywords nil
-    '(("\\_<\\(\\?[A-Z0-9][a-zA-Z0-9_]*\\)\\_>" (0 font-lock-warning-face))
+    '(("\\_<\\(\\?[-_A-Za-z0-9]+*\\)\\_>" (0 font-lock-warning-face))
       ("\\_<\\([<][-]*\\)\\_>" (0 font-lock-preprocessor-face))
-      ("\\_<\\(prolog:[<][-]\\)\\_>" (0 font-lock-preprocessor-face))
-      ("\\_<\\(prolog:def-fact-group\\)\\_>" (0 font-lock-preprocessor-face))
-      ("\\_<\\(prolog:[A-Z0-9][a-zA-Z0-9_]*\\)\\_>" (0 font-lock-preprocessor-face)))))
+      ("\\_<\\(prolog:[<][-]*\\)\\_>" (0 font-lock-preprocessor-face))
+      ("\\_<\\(prolog:[-_A-Za-z0-9]+*\\)\\_>" (0 font-lock-preprocessor-face))
+
+      ("\\_<\\(cram-prolog:[-][>]\\)\\_>" (0 font-lock-preprocessor-face))
+      ("\\_<\\(cram-prolog:[<][-]\\)\\_>" (0 font-lock-preprocessor-face))
+      ("\\_<\\(cram-prolog:[-_A-Za-z0-9]+*\\)\\_>" (0 font-lock-preprocessor-face))
+
+      ("\\_<\\(spec:[-_A-Za-z0-9]+*\\)\\_>" (0 font-lock-type-face)) ;; ido-virtual-face
+      ("\\_<\\(lisp-fun\\)\\_>" (0 font-lock-negation-char-face))
+      ("\\_<\\(desig:[-_A-Za-z0-9]+*\\)\\_>" (0 font-lock-type-face))
+      ("\\_<\\(kvr::[-_A-Za-z0-9]+*\\)\\_>" (0 font-lock-negation-char-face))      
+      )))
 (add-hook 'slime-mode-hook #'my-lisp-mode-hook)
 
 ;;; General configuration
